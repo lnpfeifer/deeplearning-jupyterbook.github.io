@@ -16,10 +16,10 @@ If you're a Windows user, install
 
 Follow the instructions and reboot your system.
 
-After that, you simply open the WLS terminal (the penguin icon).
+After that, you simply open the WSL terminal (the penguin icon).
 The first time you have to update all packages:
     
-    sudo apt update && upgrade
+    sudo apt update && sudo apt upgrade
 
 Python is already installed in WSL.
 
@@ -103,6 +103,9 @@ A virtual environment can be deactivated by command:
     deactivate
 
 ### Installing packages
+When you install packages inside a virtual environment, they are isolated from your system-wide
+Python installation. It means you can install specific versions of libraries for this project 
+without affecting other projects.
 
 Installing packages with pip is very easy. For instance, to install `jupyterlab`:
 
@@ -121,3 +124,21 @@ For instance `ImportError: No module named cv2` can be resolved by installing `o
 
     pip install opencv-python 
 ```
+### Using Jupyter Notebook in WSL on Windows
+When Running Jupyter Notebook inside WSL, it is slighlty different from running it directly on Windows
+When you start Jupyter, it runs in the Linux environment, so it cannot automatically open your 
+Windows browser.
+A recommended workflow after installing all necessary packages and WSL is as following:
+1. Open your WSL terminal and activate your virtual environment:
+```
+source ~/mbb/bin/activate
+```
+2. Start Jupyter Notebook (or JupyterLab)
+```
+jupyter notebook
+```
+3. In the terminal, you will see a URL that looks like:
+```
+http:/localhost:8888/
+```
+Copy it into a browser.
